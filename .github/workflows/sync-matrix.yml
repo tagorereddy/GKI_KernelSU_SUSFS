@@ -14,8 +14,8 @@ permissions:
   pull-requests: write
 
 on:
-  schedule:
-    - cron: '0 1 * * *'
+  #schedule:
+  #  - cron: '0 1 * * *'
   workflow_dispatch:
 
 jobs:
