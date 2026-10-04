@@ -14,8 +14,8 @@ permissions:
   pull-requests: write
 
 on:
-  schedule:
-    - cron: '0 5 * * *'  # midnight EST (5am UTC)
+  #schedule:
+  #  - cron: '0 5 * * *'  # midnight EST (5am UTC)
   workflow_dispatch:
 
 jobs:
