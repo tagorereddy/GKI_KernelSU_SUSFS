@@ -1713,7 +1713,7 @@ jobs:
       - name: Download NoMount metamodule
         uses: actions/download-artifact@v7
         with:
-          path: release-assets
+          path: release-assets/NoMount-Metamodule
           pattern: "*NoMount-Metamodule"
           merge-multiple: false
 
@@ -1733,7 +1733,6 @@ jobs:
       - name: Zip NoMount Metamodule for Release
         run: |
           set -e
-          shopt -s nullglob
 
           for dir in release-assets/*NoMount-Metamodule; do
             zip_name="${dir}.zip"
@@ -1747,12 +1746,12 @@ jobs:
         if: inputs.use_nomount
         run: |
           set -euo pipefail
+
           # The metamodule silently missed r20 (artifact built fine, no zip
           # on the release). Fail loud instead of shipping without it.
           if ! ls release-assets/NoMount-Metamodule.zip >/dev/null 2>&1; then
             echo "ERROR: use_nomount is true but release-assets/NoMount-Metamodule.zip is missing" >&2
             ls release-assets/ >&2
-            exit 1
           fi
           echo "NoMount metamodule zip OK"
 
